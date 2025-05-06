@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: maternal-health-predictor
+    env: python
+    buildCommand: ""
+    startCommand: gunicorn app:app
