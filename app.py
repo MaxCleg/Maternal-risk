@@ -1,12 +1,13 @@
 from flask import Flask, render_template, request
 import joblib
 import numpy as np
+from pickle import load
 
 app = Flask(__name__)
 import os
 
-model = joblib.load("maternal-risk-model.pkl")
-
+#model = joblib.load("maternal-risk-model.pkl")
+model = load(open("maternal-risk-model.pkl","rb"))
 @app.route("/")
 def index():
     return render_template("index.html")
@@ -21,7 +22,8 @@ def predict():
         body_temp = float(request.form["body_temp"])
         heart_rate = float(request.form["heart_rate"])
 
-        data = np.array([[age, sbp, dbp, bs, body_temp, heart_rate]])
+        #data = np.array([[age, sbp, dbp, bs, body_temp, heart_rate]])
+        data = [[age, sbp, dbp, bs, body_temp, heart_rate]]
         prediction = model.predict(data)[0]
 
         labels = {0: "Low Risk", 1: "Mid Risk", 2: "High Risk"}
