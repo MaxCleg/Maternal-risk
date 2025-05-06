@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Maternal Health Risk Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Maternal Health Risk Prediction</h1>
+        <form method="POST" action="/predict">
+            <input type="number" name="age" step="any" placeholder="Age" required>
+            <input type="number" name="sbp" step="any" placeholder="Systolic BP" required>
+            <input type="number" name="dbp" step="any" placeholder="Diastolic BP" required>
+            <input type="number" name="bs" step="any" placeholder="Blood Sugar" required>
+            <input type="number" name="body_temp" step="any" placeholder="Body Temperature" required>
+            <input type="number" name="heart_rate" step="any" placeholder="Heart Rate" required>
+            <button type="submit">Predict</button>
+        </form>
+        {% if result %}
+            <h2>Prediction: {{ result }}</h2>
+        {% endif %}
+    </div>
+</body>
+</html>
