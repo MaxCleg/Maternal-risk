@@ -3,7 +3,7 @@ import joblib
 import numpy as np
 
 app = Flask(__name__)
-model = joblib.load("/workspaces/Maternal-risk/models/maternal-risk-model.pkl")
+model = joblib.load("/workspaces/Maternal-risk/maternal-risk-model.pkl")
 
 @app.route("/")
 def index():
